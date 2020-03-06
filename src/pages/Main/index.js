@@ -12,7 +12,7 @@ class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const response = await api.post('boxes', {
+    const response = await api.post('box', {
       title: this.state.newBox
     });
 
@@ -25,13 +25,14 @@ class Main extends Component {
 
   render() {
     return (
-      <div id="main-container">
+      <div id='main-container'>
         <form onSubmit={this.handleSubmit}>
-          <img src={logo} alt=""/>
+          <img src={logo}/>
           <input
-            placeholder="Criar Box"
+            placeholder='Criar Box'
+            value={this.state.newBox}
             onChange={this.handleInputChange}/>
-          <button type="submit">Criar</button>
+          <button type='submit'>Criar</button>
         </form>
       </div>
     );

@@ -20,18 +20,19 @@ class Box extends Component {
   async componentDidMount() {
     this.subscribeToNewFiles();
 
-    const box = this.props.match.params.id;
-    const response = await api.get(`boxes/${box}`);
+    const boxId = this.props.match.params.id;
+    const response = await api.get(`box/${boxId}`);
 
     this.setState({ box: response.data });
   }
 
+  // render new files saved on backend
   subscribeToNewFiles = () => {
     const url = api.defaults.baseURL;
-    const box = this.props.match.params.id;
+    const boxId = this.props.match.params.id;
     const io = socket(url);
 
-    io.emit('connectRoom', box);
+    io.emit('connectRoom', boxId);
 
     io.on('file', data => {
       this.setState({
@@ -44,14 +45,14 @@ class Box extends Component {
   }
 
   handleUpload = (files) => {
-    const box = this.props.match.params.id;
+    const boxId = this.state.box._id;
 
     files.forEach( file => {
       const data = new FormData();
 
       data.append('file', file);
 
-      api.post(`boxes/${box}/files`, data);
+      api.post(`box/${boxId}/file`, data);
       }
     );
   }
