@@ -61,7 +61,7 @@ class Box extends Component {
     return (
       <div id='box-container'>
         <header>
-          <img src={logo} alt=""/>
+          <img src={logo} alt=''/>
           <h1>{ this.state.box.title }</h1>
         </header>
 

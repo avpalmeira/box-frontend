@@ -27,7 +27,7 @@ class Main extends Component {
     return (
       <div id='main-container'>
         <form onSubmit={this.handleSubmit}>
-          <img src={logo}/>
+          <img src={logo} alt=''/>
           <input
             placeholder='Criar Box'
             value={this.state.newBox}
